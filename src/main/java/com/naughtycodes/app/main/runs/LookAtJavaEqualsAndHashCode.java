@@ -1,6 +1,7 @@
 package com.naughtycodes.app.main.runs;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -12,13 +13,13 @@ public class LookAtJavaEqualsAndHashCode {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		List<Person> p = new ArrayList<Person>();
+		HashSet<Person> p = new HashSet<Person>();
 		LookAtJavaEqualsAndHashCode run = new LookAtJavaEqualsAndHashCode();
 		run.loadData(p);
 
 	}
 	
-	public void loadData(List<Person> p) {
+	public void loadData(HashSet<Person> p) {
 		
 		for(int i = 0; i <= 1; i++) {
 			p.add(new Person(i, "Name_"+i, "Some description_"+i, i));
@@ -27,7 +28,7 @@ public class LookAtJavaEqualsAndHashCode {
 		p.add(new Person(0, "Name_"+0, "Some description_"+0, 0));
 		
 		for(Person t : p)
-			System.out.println(t.toString());
+			System.out.println(t.hashCode()+" ::: "+t.toString());
 		
 		
 	}
@@ -54,13 +55,19 @@ class Person {
 		
 		Person tObj = (Person) obj;
 
-//		return id == tObj.id 
-//				&& ( name == tObj.name || (name != null && name.equals(tObj.getName()) ))
-//				&& ( description == tObj.description || (description != null && description.equals(tObj.getDescription())) )
-//				&& ( age == tObj.age);
+//		if(tObj instanceof Person){
+//			return id == tObj.id 
+//					&& ( name == tObj.name || (name != null && name.equals(tObj.getName()) ))
+//					&& ( description == tObj.description || (description != null && description.equals(tObj.getDescription())) )
+//					&& ( age == tObj.age);
+//		} else {
+//			return false;
+//		}
 		
-		System.out.println(this.id+" "+this.name+" "+this.description+" "+this.age);
-		System.out.println(tObj.toString());
+
+		
+//		System.out.println(id+" "+name+" "+description+" "+age);
+//		System.out.println(tObj.toString());
 		
 	    return new EqualsBuilder()
 	    		.append(id, tObj.id)
@@ -81,6 +88,16 @@ class Person {
 	         .append(age)
 	         .toHashCode();
 	   }
+
+//	@Override
+//	public int hashCode()
+//	   {
+//        int hashcode = 0;
+//        hashcode = id*20;
+//        hashcode += name.hashCode();
+//        return hashcode;
+//	   }
+
 	
 	public Person() {
 		super();
