@@ -26,6 +26,7 @@ public class LookAtJavaEqualsAndHashCode {
 		}
 		
 		p.add(new Person(0, "Name_"+0, "Some description_"+0, 0));
+		p.add(new Person(0, "Name_"+0, "Some description_"+0, 0));
 		
 		for(Person t : p)
 			System.out.println(t.hashCode()+" ::: "+t.toString());
@@ -55,48 +56,48 @@ class Person {
 		
 		Person tObj = (Person) obj;
 
-//		if(tObj instanceof Person){
-//			return id == tObj.id 
-//					&& ( name == tObj.name || (name != null && name.equals(tObj.getName()) ))
-//					&& ( description == tObj.description || (description != null && description.equals(tObj.getDescription())) )
-//					&& ( age == tObj.age);
-//		} else {
-//			return false;
-//		}
+		if(tObj instanceof Person){
+			return id == tObj.id 
+					&& ( name == tObj.name || (name != null && name.equals(tObj.getName()) ))
+					&& ( description == tObj.description || (description != null && description.equals(tObj.getDescription())) )
+					&& ( age == tObj.age);
+		} else {
+			return false;
+		}
 		
 
 		
 //		System.out.println(id+" "+name+" "+description+" "+age);
 //		System.out.println(tObj.toString());
 		
-	    return new EqualsBuilder()
-	    		.append(id, tObj.id)
-	    	    .append(name, tObj.name)
-	    	    .append(description, tObj.description)
-	    	    .append(age, tObj.age)
-	    	    .isEquals();
-
+//	    return new EqualsBuilder()
+//	    		.append(id, tObj.id)
+//	    	    .append(name, tObj.name)
+//	    	    .append(description, tObj.description)
+//	    	    .append(age, tObj.age)
+//	    	    .isEquals();
+//
 	}
 	
-	@Override
-	public int hashCode()
-	   {
-	      return new HashCodeBuilder()
-	         .append(id)
-	         .append(name)
-	         .append(description)
-	         .append(age)
-	         .toHashCode();
-	   }
-
 //	@Override
 //	public int hashCode()
 //	   {
-//        int hashcode = 0;
-//        hashcode = id*20;
-//        hashcode += name.hashCode();
-//        return hashcode;
+//	      return new HashCodeBuilder()
+//	         .append(id)
+//	         .append(name)
+//	         .append(description)
+//	         .append(age)
+//	         .toHashCode();
 //	   }
+
+	@Override
+	public int hashCode()
+	   {
+        int hashcode = 0;
+        hashcode = id*20;
+        hashcode += name.hashCode();
+        return hashcode;
+	   }
 
 	
 	public Person() {

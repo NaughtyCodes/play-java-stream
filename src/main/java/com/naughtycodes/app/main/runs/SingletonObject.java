@@ -9,7 +9,7 @@ public class SingletonObject {
 
 	public static SingletonObject getInstance() {
 		
-		if(singletonObject != null) {
+		if(singletonObject instanceof SingletonObject) {
 			return singletonObject;
 		} else {
 			singletonObject = new SingletonObject();
